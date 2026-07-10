@@ -172,13 +172,6 @@ Laporan Harian
 
 </ul>
 
-<a href="{{ route('login') }}" class="btn btn-light">
-
-<i class="fa-solid fa-right-to-bracket"></i>
-
-Login
-
-</a>
 
 </div>
 

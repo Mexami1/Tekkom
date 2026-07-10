@@ -28,7 +28,20 @@ class DailyReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+        'judul' => 'required',
+        'deskripsi' => 'required',
+    ]);
+
+    DailyReport::create([
+    'user_id' => auth()->id(),
+    'judul' => $request->judul,
+    'deskripsi' => $request->deskripsi,
+    'tanggal' => now()->toDateString(),
+    'status' => 'Proses',
+]);
+
+    return back()->with('success', 'Laporan berhasil disimpan.');
     }
 
     /**

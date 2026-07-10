@@ -4,17 +4,50 @@ namespace App\Http\Controllers;
 
 use App\Models\Attendance;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class AttendanceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+{
+    //
+}
+public function masuk()
+{
+    Attendance::firstOrCreate(
+        [
+            'user_id' => auth()->id(),
+            'tanggal' => now()->toDateString(),
+        ],
+        [
+            'jam_masuk' => now()->format('H:i:s'),
+            'status' => 'Hadir',
+        ]
+    );
+
+    return back()->with('success', 'Absen masuk berhasil.');
+}
+
+public function pulang()
+{
+    $attendance = Attendance::where('user_id', auth()->id())
+        ->whereDate('tanggal', today())
+        ->first();
+
+    if (!$attendance) {
+        return back()->with('error', 'Silakan absen masuk terlebih dahulu.');
     }
 
+    $attendance->update([
+        'jam_keluar' => now()->format('H:i:s'),
+        'status' => 'Pulang',
+    ]);
+
+    return back()->with('success', 'Absen pulang berhasil.');
+}
+    
     /**
      * Show the form for creating a new resource.
      */

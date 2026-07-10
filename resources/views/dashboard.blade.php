@@ -109,43 +109,34 @@ body{
 
 }
 
-.content{
-
+..content{
     display:grid;
-
     grid-template-columns:0.8fr 1.2fr;
-
     gap:20px;
-
-    align-items:start;
-
+    align-items:stretch;
 }
+
 
 .box{
-
     background:#fff;
-
     padding:22px;
-
     border-radius:18px;
-
     border-top:5px solid #14b8a6;
-
     box-shadow:0 10px 25px rgba(20,184,166,.10);
-
+    display:flex;
+    flex-direction:column;
 }
-.box:first-child{
-
-    max-height:220px;
-
+.content .box:first-child{
+    margin-top: -10px; /* naikkan 10px */
 }
 
 .box h3{
-
     color:#0f766e;
+    margin-bottom:10px;
+}
 
-    margin-bottom:20px;
-
+textarea{
+    margin-top:0;
 }
 
 label{
@@ -222,15 +213,16 @@ button:hover{
     margin-left:10px;
 
 }
+.btn-group{
+    margin-top:auto;
+    padding-top:20px;
+}
 
 .btn-simpan{
-
     background:#0f766e;
-
     color:white;
-
     width:100%;
-
+    margin-top:12px; /* jarak dari textarea */
 }
 
 .riwayat{
@@ -257,6 +249,13 @@ button:hover{
 
 }
 
+/* Turunkan kotak Laporan Harian */
+.content .box:last-child{
+    margin-top:10px;
+}
+
+</style>
+
 </style>
 
 <div class="container">
@@ -273,17 +272,22 @@ button:hover{
 
 <div class="card">
 <h4>Total Hadir</h4>
-<h1>18</h1>
+<h1>{{ $totalHadir }}</h1>
 </div>
 
 <div class="card">
-<h4>Laporan Bulan Ini</h4>
-<h1>23</h1>
+    <h4>Laporan Bulan Ini</h4>
+    <h1>{{ $laporanBulanIni }}</h1>
 </div>
 
 <div class="card">
 <h4>Status Hari Ini</h4>
-<h1 style="font-size:24px;">Belum Absen</h1>
+
+@if($statusHariIni)
+    <h1 style="font-size:24px;">{{ $statusHariIni->status }}</h1>
+@else
+    <h1 style="font-size:24px;">Belum Absen</h1>
+@endif
 </div>
 
 </div>
@@ -298,13 +302,21 @@ button:hover{
 
 <p><b>Jam :</b> {{ date('H:i') }} WIB</p>
 
-<button class="btn-masuk">
-Absen Masuk
-</button>
+<div class="btn-group">
 
-<button class="btn-pulang">
-Absen Pulang
-</button>
+    <form action="{{ route('absen.masuk') }}" method="POST" style="display:inline;">
+    @csrf
+    <button type="submit" class="btn-masuk">
+        Absen Masuk
+    </button>
+</form>
+
+<form action="{{ route('absen.pulang') }}" method="POST" style="display:inline;">
+    @csrf
+    <button type="submit" class="btn-pulang">
+        Absen Pulang
+    </button>
+</form>
 
 </div>
 
@@ -312,45 +324,48 @@ Absen Pulang
 
 <h3>📝 Laporan Harian</h3>
 
-<form>
+<form action="{{ route('reports.store') }}" method="POST">
+    @csrf
 
-<label>Judul Pekerjaan</label>
+    <label>Judul</label>
+    <input type="text" name="judul" placeholder="Masukkan judul pekerjaan" required>
 
-<input type="text" placeholder="Masukkan judul pekerjaan">
+    <textarea
+        name="deskripsi"
+        placeholder="Laporan pekerjaan..."
+        required
+    ></textarea>
 
-<label>Deskripsi</label>
-
-<textarea placeholder="Masukkan laporan pekerjaan..."></textarea>
-
-<button class="btn-simpan">
-
-Simpan Laporan
-
-</button>
-
+    <button type="submit" class="btn-simpan">
+        Simpan Laporan
+    </button>
 </form>
 
-</div>
-
-</div>
 
 <div class="riwayat">
 
-<h3>📋 Riwayat Hari Ini</h3>
+    <h3>📋 Riwayat Hari Ini</h3>
 
-<ul>
 
-<li>08:00 - Absen Masuk</li>
+    <ul>
 
-<li>12:00 - Istirahat</li>
+    @forelse($laporanHariIni as $laporan)
 
-<li>17:00 - Absen Pulang</li>
+        <li>
+            {{ $laporan->created_at->format('H:i') }} - {{ $laporan->judul }}
+        </li>
 
-<li>Laporan : Instalasi Laravel & Pembuatan Dashboard</li>
+        <li>
+            Laporan : {{ $laporan->deskripsi }}
+        </li>
 
-</ul>
+    @empty
 
-</div>
+        <li>Belum ada laporan hari ini.</li>
+
+    @endforelse
+
+    </ul>
 
 </div>
 
