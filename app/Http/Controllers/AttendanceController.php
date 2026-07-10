@@ -4,33 +4,40 @@ namespace App\Http\Controllers;
 
 use App\Models\Attendance;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
 class AttendanceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-{
-    //
-}
-public function masuk()
-{
-    Attendance::firstOrCreate(
-        [
-            'user_id' => auth()->id(),
-            'tanggal' => now()->toDateString(),
-        ],
-        [
-            'jam_masuk' => now()->format('H:i:s'),
-            'status' => 'Hadir',
-        ]
-    );
+    {
+        //
+    }
 
-    return back()->with('success', 'Absen masuk berhasil.');
-}
+    /**
+     * Absen Masuk
+     */
+    public function masuk()
+    {
+        Attendance::firstOrCreate(
+            [
+                'user_id' => auth()->id(),
+                'tanggal' => now()->toDateString(),
+            ],
+            [
+                'jam_masuk' => now()->format('H:i:s'),
+                'status' => 'Hadir',
+            ]
+        );
 
-public function pulang()
+        return back()->with('success', 'Absen masuk berhasil.');
+    }
+
+    /**
+     * Absen Pulang
+     */
+    public function pulang()
 {
     $attendance = Attendance::where('user_id', auth()->id())
         ->whereDate('tanggal', today())
@@ -42,12 +49,11 @@ public function pulang()
 
     $attendance->update([
         'jam_keluar' => now()->format('H:i:s'),
-        'status' => 'Pulang',
     ]);
 
     return back()->with('success', 'Absen pulang berhasil.');
 }
-    
+
     /**
      * Show the form for creating a new resource.
      */
@@ -57,7 +63,7 @@ public function pulang()
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource.
      */
     public function store(Request $request)
     {
@@ -81,7 +87,7 @@ public function pulang()
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource.
      */
     public function update(Request $request, Attendance $attendance)
     {
@@ -89,7 +95,7 @@ public function pulang()
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource.
      */
     public function destroy(Attendance $attendance)
     {

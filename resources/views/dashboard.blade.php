@@ -281,16 +281,23 @@ button:hover{
 </div>
 
 <div class="card">
-<h4>Status Hari Ini</h4>
+    <h4>Status Hari Ini</h4>
 
-@if($statusHariIni)
-    <h1 style="font-size:24px;">{{ $statusHariIni->status }}</h1>
-@else
-    <h1 style="font-size:24px;">Belum Absen</h1>
-@endif
+    @if($statusHariIni)
+        @if($statusHariIni->jam_keluar)
+            <h1 style="font-size:24px;">Pulang</h1>
+        @else
+            <h1 style="font-size:24px;">Hadir</h1>
+        @endif
+    @else
+        <h1 style="font-size:24px;">Belum Absen</h1>
+    @endif
 </div>
 
-</div>
+</div> {{-- tutup cards --}}
+
+<div class="content">
+
 
 <div class="content">
 
@@ -318,7 +325,9 @@ button:hover{
     </button>
 </form>
 
-</div>
+</div> <!-- btn-group -->
+
+</div> <!-- tutup box Daftar Hadir -->
 
 <div class="box">
 
