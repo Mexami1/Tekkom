@@ -11,9 +11,13 @@ class AttendanceController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
-    }
+{
+    $attendance = Attendance::where('user_id', auth()->id())
+        ->orderBy('tanggal', 'desc')
+        ->get();
+
+    return view('attendance.index', compact('attendance'));
+}
 
     /**
      * Absen Masuk

@@ -1,270 +1,209 @@
 <x-app-layout>
 
-    <x-slot name="header">
-        <h2 style="font-size:28px;font-weight:bold;color:#0f766e;">
-            
-        </h2>
-    </x-slot>
+<style>
 
-<style>body{
-    background:linear-gradient(135deg,#ccfbf1,#99f6e4,#5eead4) !important;
-}
-
-main{
-    background:linear-gradient(135deg,#ccfbf1,#99f6e4,#5eead4) !important;
-    min-height:100vh;
-}
-
+body,
+main,
 .min-h-screen{
-    background:linear-gradient(135deg,#ccfbf1,#99f6e4,#5eead4) !important;
-} <style>
-
-body{
-    background:linear-gradient(135deg,#d8faf6,#eefdfa,#c8f5f2);
-    min-height:100vh;
+    background:linear-gradient(135deg,#d8faf6,#eefdfa,#c8f5f2)!importa  nt;
 }
 
 .container{
-    max-width:1150px;
+    width:100%;
+    max-width:1300px;
     margin:auto;
-    padding:35px 25px;
+    padding:30px;
 }
 
-.welcome{
-    background:white;
+.header-dashboard{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#fff;
     padding:25px;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    margin-bottom:25px;
-}
-
-.welcome h2{
-    color:#0f766e;
-    margin-bottom:5px;
-}
-
-.welcome{
-
-    background:white;
-
-    padding:25px;
-
     border-radius:18px;
-
-    box-shadow:0 10px 25px rgba(20,184,166,.08);
-
-    margin-bottom:25px;
-
     border-left:6px solid #14b8a6;
+    box-shadow:0 10px 25px rgba(20,184,166,.08);
+    margin-bottom:25px;
+}
 
+.header-dashboard h2{
+    color:#0f766e;
+    margin:0;
+    font-size:30px;
+}
+
+.header-dashboard p{
+    color:#666;
+    margin-top:8px;
+}
+
+.clock-box{
+    text-align:center;
+}
+
+#clock{
+    font-size:42px;
+    color:#14b8a6;
+    font-weight:bold;
+}
+
+#date{
+    color:#777;
+    margin-top:8px;
 }
 
 .cards{
-
     display:grid;
-
     grid-template-columns:repeat(3,1fr);
-
     gap:20px;
-
-    margin-bottom:30px;
-
+    margin-bottom:25px;
 }
 
 .card{
-
     background:#fff;
-
-    border-radius:18px;
-
     padding:22px;
-
+    border-radius:18px;
     border-left:5px solid #14b8a6;
-
     box-shadow:0 10px 25px rgba(20,184,166,.10);
-
     transition:.3s;
-
 }
 
 .card:hover{
-
     transform:translateY(-5px);
-
 }
 
 .card h4{
-
     color:#666;
-
     margin-bottom:10px;
-
 }
 
 .card h1{
-
     color:#14b8a6;
-
-    font-size:35px;
-
+    font-size:34px;
 }
 
-..content{
+.dashboard-content{
     display:grid;
-    grid-template-columns:0.8fr 1.2fr;
+    grid-template-columns:1fr 1fr;
     gap:20px;
-    align-items:stretch;
+    margin-top:20px;
 }
-
 
 .box{
     background:#fff;
     padding:22px;
     border-radius:18px;
     border-top:5px solid #14b8a6;
-    box-shadow:0 10px 25px rgba(20,184,166,.10);
-    display:flex;
-    flex-direction:column;
-}
-.content .box:first-child{
-    margin-top: -10px; /* naikkan 10px */
+    box-shadow:0 10px 25px rgba(20,184,166,.08);
 }
 
 .box h3{
+    margin-bottom:15px;
     color:#0f766e;
-    margin-bottom:10px;
-}
-
-textarea{
-    margin-top:0;
 }
 
 label{
-
     display:block;
-
-    margin-top:15px;
-
-    margin-bottom:8px;
-
+    margin:12px 0 8px;
     font-weight:600;
-
 }
 
 input,
 textarea{
-
     width:100%;
-
-    padding:12px;
-
     border:1px solid #ddd;
-
     border-radius:10px;
-
-    outline:none;
-
+    padding:12px;
 }
 
 textarea{
-
     resize:none;
-
     height:120px;
-
 }
 
-button{
-
-    border:none;
-
-    padding:12px 24px;
-
-    border-radius:10px;
-
-    cursor:pointer;
-
-    font-weight:600;
-
-    transition:.3s;
-
-}
-
-button:hover{
-
-    transform:translateY(-2px);
-
+.btn-group{
+    margin-top:20px;
 }
 
 .btn-masuk{
-
     background:#14b8a6;
-
     color:white;
-
+    border:none;
+    padding:12px 24px;
+    border-radius:10px;
+    cursor:pointer;
 }
 
 .btn-pulang{
-
     background:#ef4444;
-
     color:white;
-
+    border:none;
+    padding:12px 24px;
+    border-radius:10px;
+    cursor:pointer;
     margin-left:10px;
-
-}
-.btn-group{
-    margin-top:auto;
-    padding-top:20px;
 }
 
 .btn-simpan{
+    width:100%;
+    margin-top:15px;
     background:#0f766e;
     color:white;
-    width:100%;
-    margin-top:12px; /* jarak dari textarea */
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
 }
 
 .riwayat{
-
     margin-top:25px;
-
-    background:white;
-
-    padding:25px;
-
+    background:#fff;
+    padding:22px;
     border-radius:18px;
-
-    border-top:5px solid #14b8a6;
-
     box-shadow:0 10px 25px rgba(20,184,166,.08);
-
 }
 
-.riwayat ul{
+@media(max-width:900px){
 
-    margin-top:15px;
-
-    padding-left:20px;
-
+.cards{
+    grid-template-columns:1fr;
 }
 
-/* Turunkan kotak Laporan Harian */
-.content .box:last-child{
-    margin-top:10px;
+.dashboard-content{
+    grid-template-columns:1fr;
 }
 
-</style>
+.header-dashboard{
+    flex-direction:column;
+    gap:20px;
+}
+
+}
 
 </style>
 
 <div class="container">
 
-<div class="welcome">
+<div class="header-dashboard">
 
-<h2>Halo, {{ Auth::user()->name }} 👋</h2>
+<div>
 
-<p>Selamat datang di Sistem Daftar Hadir & Laporan Harian.</p>
+<h2 id="greeting">
+Selamat Datang, {{ Auth::user()->name }} 👋
+</h2>
+
+<p id="today-date"></p>
+
+</div>
+
+<div class="clock-box">
+
+<div id="clock"></div>
+
+<div id="date"></div>
+
+</div>
 
 </div>
 
@@ -276,106 +215,249 @@ button:hover{
 </div>
 
 <div class="card">
-    <h4>Laporan Bulan Ini</h4>
-    <h1>{{ $laporanBulanIni }}</h1>
+<h4>Laporan Bulan Ini</h4>
+<h1>{{ $laporanBulanIni }}</h1>
 </div>
 
 <div class="card">
-    <h4>Status Hari Ini</h4>
 
-    @if($statusHariIni)
-        @if($statusHariIni->jam_keluar)
-            <h1 style="font-size:24px;">Pulang</h1>
-        @else
-            <h1 style="font-size:24px;">Hadir</h1>
-        @endif
-    @else
-        <h1 style="font-size:24px;">Belum Absen</h1>
-    @endif
+<h4>Status Hari Ini</h4>
+
+@if($statusHariIni)
+
+@if($statusHariIni->jam_keluar)
+
+<h1 style="font-size:24px;">Pulang</h1>
+
+@else
+
+<h1 style="font-size:24px;">Hadir</h1>
+
+@endif
+
+@else
+
+<h1 style="font-size:24px;">Belum Absen</h1>
+
+@endif
+
 </div>
 
-</div> {{-- tutup cards --}}
+</div>
 
-<div class="content">
+    <div class="dashboard-content"></div>
 
+    <!-- Absensi -->
+    <div class="box">
 
-<div class="content">
+        <h3>📍 Absensi Hari Ini</h3>
 
-<div class="box">
+        @if($statusHariIni)
 
-<h3>📍 Daftar Hadir</h3>
+            <p><strong>Jam Masuk :</strong>
+                {{ \Carbon\Carbon::parse($statusHariIni->jam_masuk)->format('H:i') }}
+            </p>
 
-<p><b>Tanggal :</b> {{ date('d F Y') }}</p>
+            <p>
+                <strong>Jam Pulang :</strong>
 
-<p><b>Jam :</b> {{ date('H:i') }} WIB</p>
+                @if($statusHariIni->jam_keluar)
+                    {{ \Carbon\Carbon::parse($statusHariIni->jam_keluar)->format('H:i') }}
+                @else
+                    -
+                @endif
+            </p>
 
-<div class="btn-group">
+        @else
 
-    <form action="{{ route('absen.masuk') }}" method="POST" style="display:inline;">
-    @csrf
-    <button type="submit" class="btn-masuk">
-        Absen Masuk
-    </button>
-</form>
+            <p>Anda belum melakukan absensi hari ini.</p>
 
-<form action="{{ route('absen.pulang') }}" method="POST" style="display:inline;">
-    @csrf
-    <button type="submit" class="btn-pulang">
-        Absen Pulang
-    </button>
-</form>
+        @endif
 
-</div> <!-- btn-group -->
+        <div class="btn-group">
 
-</div> <!-- tutup box Daftar Hadir -->
+            @if(!$statusHariIni)
 
-<div class="box">
+                <form action="{{ route('absen.masuk') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn-masuk">
+                        Absen Masuk
+                    </button>
+                </form>
 
-<h3>📝 Laporan Harian</h3>
+            @elseif(!$statusHariIni->jam_keluar)
 
-<form action="{{ route('reports.store') }}" method="POST">
-    @csrf
+                <form action="{{ route('absen.pulang') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn-pulang">
+                        Absen Pulang
+                    </button>
+                </form>
 
-    <label>Judul</label>
-    <input type="text" name="judul" placeholder="Masukkan judul pekerjaan" required>
+            @else
 
-    <textarea
-        name="deskripsi"
-        placeholder="Laporan pekerjaan..."
-        required
-    ></textarea>
+                <p style="color:green;font-weight:bold;">
+                    ✅ Absensi hari ini sudah selesai.
+                </p>
 
-    <button type="submit" class="btn-simpan">
-        Simpan Laporan
-    </button>
-</form>
+            @endif
 
+        </div>
 
+    </div>
+
+    <!-- Laporan Harian -->
+    <div class="box">
+
+        <h3>📝 Laporan Harian</h3>
+
+        <form action="{{ route('reports.store') }}" method="POST">
+
+            @csrf
+
+            <label>Judul</label>
+
+            <input
+                type="text"
+                name="judul"
+                placeholder="Contoh:TEKKOM"
+                required
+            >
+
+           <label>Deskripsi</label>
+
+<textarea
+    name="deskripsi"
+    required
+></textarea>
+
+<label>Status</label>
+
+<select
+    name="status"
+    style="
+        width:100%;
+        padding:12px;
+        border:1px solid #ddd;
+        border-radius:10px;
+        margin-bottom:15px;
+    "
+    required
+>
+    <option value="Proses">🟡 Proses</option>
+    <option value="Selesai">🟢 Selesai</option>
+</select>
+
+<button type="submit" class="btn-simpan">
+    Simpan Laporan
+</button>
+</div>
+<!-- Aktivitas Terakhir -->
+<div class="box" style="margin-top:25px;">
+
+    <h3>📌 Aktivitas Terakhir</h3>
+
+    @if($statusHariIni)
+
+        <p>✅ Sudah Absen Masuk</p>
+
+        @if($statusHariIni->jam_keluar)
+            <p>✅ Sudah Absen Pulang</p>
+        @endif
+
+    @else
+
+        <p>❌ Belum melakukan absensi hari ini.</p>
+
+    @endif
+
+    @if($laporanHariIni->count())
+
+        <p>📝 Sudah mengirim {{ $laporanHariIni->count() }} laporan hari ini.</p>
+
+    @else
+
+        <p>📝 Belum mengirim laporan hari ini.</p>
+
+    @endif
+
+</div>
+
+<!-- Riwayat Laporan -->
 <div class="riwayat">
 
-    <h3>📋 Riwayat Hari Ini</h3>
-
+    <h3>📋 Riwayat Laporan Hari Ini</h3>
 
     <ul>
 
-    @forelse($laporanHariIni as $laporan)
+        @forelse($laporanHariIni as $laporan)
 
-        <li>
-            {{ $laporan->created_at->format('H:i') }} - {{ $laporan->judul }}
-        </li>
+            <li style="margin-bottom:15px;">
+                <strong>{{ $laporan->created_at->format('H:i') }}</strong>
+                - {{ $laporan->judul }}
+                <br>
+                {{ $laporan->deskripsi }}
+            </li>
 
-        <li>
-            Laporan : {{ $laporan->deskripsi }}
-        </li>
+        @empty
 
-    @empty
+            <li>Belum ada laporan hari ini.</li>
 
-        <li>Belum ada laporan hari ini.</li>
-
-    @endforelse
+        @endforelse
 
     </ul>
 
 </div>
+
+</div> {{-- Tutup Container --}}
+
+<script>
+
+function updateClock(){
+
+    const now = new Date();
+
+    // Jam
+    document.getElementById("clock").innerHTML =
+        now.toLocaleTimeString("id-ID");
+
+    // Tanggal
+    document.getElementById("date").innerHTML =
+        now.toLocaleDateString("id-ID",{
+            weekday:"long",
+            day:"numeric",
+            month:"long",
+            year:"numeric"
+        });
+
+    document.getElementById("today-date").innerHTML =
+        now.toLocaleDateString("id-ID",{
+            weekday:"long",
+            day:"numeric",
+            month:"long",
+            year:"numeric"
+        });
+
+    // Greeting
+    let jam = now.getHours();
+    let salam = "Selamat Malam";
+
+    if(jam >= 4 && jam < 11){
+        salam = "Selamat Pagi";
+    }else if(jam >= 11 && jam < 15){
+        salam = "Selamat Siang";
+    }else if(jam >= 15 && jam < 18){
+        salam = "Selamat Sore";
+    }
+
+    document.getElementById("greeting").innerHTML =
+        salam + ", {{ Auth::user()->name }} 👋";
+
+}
+
+setInterval(updateClock,1000);
+updateClock();
+
+</script>
 
 </x-app-layout>

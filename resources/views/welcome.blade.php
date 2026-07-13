@@ -158,17 +158,8 @@ Beranda
 </a>
 </li>
 
-<li class="nav-item">
-<a class="nav-link" href="#">
-Daftar Hadir
-</a>
-</li>
 
-<li class="nav-item">
-<a class="nav-link" href="#">
-Laporan Harian
-</a>
-</li>
+
 
 </ul>
 
@@ -195,9 +186,8 @@ Selamat Datang
 
 <p class="mt-4">
 
-Sistem ini digunakan untuk melakukan perekaman daftar hadir pegawai,
-pelaporan tugas harian, serta monitoring aktivitas secara digital
-dan real-time.
+Sistem ini digunakan untuk mencatat kehadiran serta mengelola laporan tugas harian secara digital
+sehingga aktivitas pengguna dapat dipantau dengan lebih mudah dan efisien.
 
 </p>
 
@@ -206,7 +196,7 @@ class="btn btn-success mt-3">
 
 <i class="fa-solid fa-arrow-right"></i>
 
-Mulai Sekarang
+Login
 
 </a>
 
