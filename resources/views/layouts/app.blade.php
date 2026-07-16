@@ -6,6 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>TEKKOM</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-tekkom.png') }}">
+
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -111,7 +113,6 @@
    class="{{ request()->routeIs('reports.*') ? 'active-menu' : '' }}">
    📋 Riwayat Harian
 </a>
-
 
 <a href="{{ route('profile.edit') }}"
    class="{{ request()->routeIs('profile.*') ? 'active-menu' : '' }}">

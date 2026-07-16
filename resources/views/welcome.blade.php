@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tekkom</title>
+   <title>Tekkom</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="{{ asset('images/logo-tekkom.png') }}">
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
 
 body{
@@ -69,8 +70,14 @@ body{
     color:#555;
 }
 
-.hero img{
-    max-width:380px;
+.hero-logo{
+    width:350px;
+    height:350px;
+    object-fit:contain;
+    background:transparent;
+    padding:0;
+    box-shadow:none;
+    border:none;
 }
 
 /*================ BUTTON =================*/
@@ -185,10 +192,8 @@ Selamat Datang
 </h1>
 
 <p class="mt-4">
-
 Sistem ini digunakan untuk mencatat kehadiran serta mengelola laporan tugas harian secara digital
 sehingga aktivitas pengguna dapat dipantau dengan lebih mudah dan efisien.
-
 </p>
 
 <a href="{{ route('login') }}"
@@ -202,11 +207,13 @@ Login
 
 </div>
 
-<div class="col-lg-6 text-center">
+<div class="col-lg-6 d-flex justify-content-center align-items-center">
 
-<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-class="img-fluid">
+    <img src="{{ asset('images/logo-tekkom.png') }}"
+         class="hero-logo"
+         alt="Logo Tekkom">
 
+</div>
 </div>
 
 </div>
@@ -283,17 +290,17 @@ dan cepat.
 
 <div class="col-md-4">
 
-<h5>Unit Kerja</h5>
+<h5>Made By</h5>
 
-<p>Bagian Administrasi</p>
+<p>SMKTIAIRLANGGA</p>
 
 </div>
 
 <div class="col-md-4">
 
-<h5>Hubungi Kami</h5>
+<h5>Layanan</h5>
 
-<p>admin@instansi.go.id</p>
+<p>Laporan Tugas Online</p>
 
 </div>
 
