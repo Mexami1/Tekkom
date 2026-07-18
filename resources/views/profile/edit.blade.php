@@ -1,29 +1,66 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
+<div class="profile-page">
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
-
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
-            </div>
-        </div>
+    <div class="profile-header">
+        <h1>👤 Profil Saya</h1>
+        <p>Kelola informasi akun dan keamanan akun Anda.</p>
     </div>
+
+    <div class="profile-card">
+        @include('profile.partials.update-profile-information-form')
+    </div>
+
+    <div class="profile-card">
+        @include('profile.partials.update-password-form')
+    </div>
+
+    <div class="profile-card danger">
+        @include('profile.partials.delete-user-form')
+    </div>
+
+</div>
+
 </x-app-layout>
+
+<style>
+
+.profile-page{
+    max-width:1000px;
+    margin:auto;
+    padding:35px;
+}
+
+.profile-header{
+    margin-bottom:25px;
+}
+
+.profile-header h1{
+    font-size:32px;
+    color:#0f766e;
+    font-weight:bold;
+}
+
+.profile-header p{
+    color:#64748b;
+    font-size:16px;
+}
+
+.profile-card{
+
+    background:white;
+    border-radius:18px;
+    padding:35px;
+    margin-bottom:25px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+    border-top:6px solid #14b8a6;
+}
+
+.profile-card.danger{
+    border-top:6px solid #ef4444;
+}
+
+</style>
