@@ -238,8 +238,7 @@ Login
 
 <p>
 
-Melakukan absensi masuk,
-istirahat,
+Melakukan absensi masuk
 dan pulang secara online.
 
 </p>

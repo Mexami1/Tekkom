@@ -67,24 +67,43 @@
 </td>
 <td style="padding:15px; text-align:center;">
 
-    @if($report->status == 'Proses')
+    <div style="display:flex;justify-content:center;gap:10px;">
 
-        <a href="{{ route('reports.edit', $report->id) }}"
-        style="
-            background:#f59e0b;
-            color:white;
-            padding:8px 14px;
-            border-radius:8px;
-            text-decoration:none;
-            font-weight:bold;">
-            ✏️ Edit
-        </a>
+        @if($report->status == 'Proses')
+            <a href="{{ route('reports.edit', $report) }}"
+               style="
+                    background:#f59e0b;
+                    color:white;
+                    padding:8px 14px;
+                    border-radius:8px;
+                    text-decoration:none;
+                    font-weight:bold;">
+                ✏️ Edit
+            </a>
+        @endif
 
-    @else
+        <form action="{{ route('reports.destroy', $report) }}"
+              method="POST"
+              onsubmit="return confirm('Yakin ingin menghapus laporan ini?')">
 
-        -
+            @csrf
+            @method('DELETE')
 
-    @endif
+            <button type="submit"
+                    style="
+                        background:#ef4444;
+                        color:white;
+                        padding:8px 14px;
+                        border:none;
+                        border-radius:8px;
+                        cursor:pointer;
+                        font-weight:bold;">
+                🗑️ Hapus
+            </button>
+
+        </form>
+
+    </div>
 
 </td>
 

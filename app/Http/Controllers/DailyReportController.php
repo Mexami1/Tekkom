@@ -86,11 +86,16 @@ public function update(Request $request, DailyReport $report)
         ->with('success', 'Laporan berhasil diperbarui.');
 }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(DailyReport $dailyReport)
-    {
-        //
-    }
+   /**
+ * Remove the specified resource from storage.
+ */
+public function destroy($id)
+{
+    $report = DailyReport::findOrFail($id);
+
+    $report->delete();
+
+    return redirect()->route('reports.index')
+        ->with('success', 'Laporan berhasil dihapus.');
+}
 }
